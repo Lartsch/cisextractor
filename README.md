@@ -1,6 +1,8 @@
 # cisextractor
 Tool to extract rules from any CIS benchmark PDF, written in Go.  
+
 The tool had a success rate of 100% for all of the tested PDFs as of May 2022 (considering the amount of rules found and successful content extraction). Some rules might still be missed (please report any issues). 
+
 Supports CSV and YAML output, preserves linebreaks by default.  
 ## Installation
 1.  Download the prebuilt executable for your OS (see [Releases](https://github.com/lartsch/cisextractor/releases))
