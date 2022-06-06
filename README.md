@@ -1,12 +1,10 @@
 # cisextractor
 Tool to extract rules from any CIS benchmark PDF, written in Go.  
-The tool had a success rate of 100% for all of the tested PDFs as of May 2022 (considering the amount of rules found and successful content extraction). Some rules might still be missed (please report any issues).  
+The tool had a success rate of 100% for all of the tested PDFs as of May 2022 (considering the amount of rules found and successful content extraction). Some rules might still be missed (please report any issues). 
 Supports CSV and YAML output, preserves linebreaks by default.  
-
-**PLEASE NOTE:** Some AVs detect Go binaries as a trojan, especially on Windows machines (see [official statement](https://go.dev/doc/faq#virus)). This is a false positive. Please check the source and build script for yourself if you want to make sure.  
-
 ## Installation
 1.  Download the prebuilt executable for your OS (see [Releases](https://github.com/lartsch/cisextractor/releases))
+> :warning: **NOTE:** Some AVs detect Go binaries as a trojan, especially on Windows machines (see [official statement](https://go.dev/doc/faq#virus)). This is a false positive. Please check the source and build script for yourself if you want to make sure.  
 ### Linux (Tested)
 2.  Add execution permissions to the file (```chmod +x <file>```)
 3.  Install poppler-utils:
