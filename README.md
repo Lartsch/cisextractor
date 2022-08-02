@@ -6,7 +6,7 @@ The tool had a success rate of 100% for all of the tested PDFs as of May 2022 (c
 Supports CSV and YAML output, preserves linebreaks by default.  Please leave a star if you found this tool to be useful.
 ## Installation
 1.  Download the prebuilt executable for your OS (see [Releases](https://github.com/lartsch/cisextractor/releases))
-> :warning: **NOTE:** Some AVs detect Go binaries as a trojan, especially on Windows machines (see [official statement](https://go.dev/doc/faq#virus)). This is a false positive. Please check the source and build script for yourself if you want to make sure.  
+> :warning: **NOTE:** Some AVs detect Go binaries as a trojan, especially on Windows machines (see [official statement](https://go.dev/doc/faq#virus) from Go). This is a **false positive**. Please check the source and build script for yourself if you want to make sure.  
 ### Linux (Tested + Recommended)
 2.  Add execution permissions to the file (```chmod +x <file>```)
 3.  Install poppler-utils:
