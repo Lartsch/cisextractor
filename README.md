@@ -42,7 +42,7 @@ usage: cisextractor_windows_amd64.exe --in=IN [<flags>]                         
 ```
 
 **Additional notes:**  
-- It can happen that some rules are not identified or there are issues with extracting their respective contents - especially when there are fundamental changes to the PDF files that break the tool's (quite complex) regular expressions. Currently, no issues were found for the CIS PDFs as of June 2022.
+- It can happen that some rules are not identified or there are issues with extracting their respective contents - especially when there are fundamental changes to the PDF files that break the tool's (quite complex) regular expressions. No issues were found for the latest CIS PDFs as of June 2022.
 - Formatting of section contents does not always look good, even though lots of processing is done
 	- Use the ```-t``` flag if you want to remove all linebreaks (this will lead to confusion when actually reading the content for some sections)
 - Formatting of the "CIS Controls" table is not good yet - maybe additional processing will be added in the future
