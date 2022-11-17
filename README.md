@@ -7,7 +7,7 @@ Supports CSV and YAML output, preserves linebreaks by default. I made this prima
 
 **Please report any issues and create a pull request if you have any improvements :)**  
 
-> :warning: **NOTE:** Some AVs detect Go binaries as a trojan virus, especially on Windows machines (see [official statement](https://go.dev/doc/faq#virus) from Go). This is a **false positive**. Please check the source and build script for yourself if you want to make sure.  
+> :warning: **Note:** Some anti virus softwares detect Go binaries as a trojan virus, especially on Windows machines (see [official statement](https://go.dev/doc/faq#virus) from Go). This is a **false positive**. Please check the source and build script for yourself if you want to be extra sure.  
 
 ## Installation
 1.  Download the prebuilt executable for your OS (see [Releases](https://github.com/lartsch/cisextractor/releases)) or build from source yourself (see below)
