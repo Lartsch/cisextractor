@@ -1,11 +1,11 @@
 # cisextractor
 Tool to extract rules from any CIS benchmark PDF, written in Go.  
 
-The tool had a success rate of 100% for all of the tested PDFs as of May 2022 (considering the amount of rules found and successful content extraction). Some rules might still be missed (please report any issues). 
+The tool had a success rate of 100% for all of the tested PDFs as of May 2022 (considering the amount of rules found and successful content extraction). Some rules might still be missed. Also, if there are structural changes made by CIS for the PDFs, this tool will need to be updated.
 
-**Please create a pull request if you have any improvements :)**  
+Supports CSV and YAML output, preserves linebreaks by default. I made this primarily to improve my Regex skills.
 
-Supports CSV and YAML output, preserves linebreaks by default.  Please leave a star if you found this tool to be useful.
+**Please report any issues and create a pull request if you have any improvements :)**  
 
 > :warning: **NOTE:** Some AVs detect Go binaries as a trojan virus, especially on Windows machines (see [official statement](https://go.dev/doc/faq#virus) from Go). This is a **false positive**. Please check the source and build script for yourself if you want to make sure.  
 
