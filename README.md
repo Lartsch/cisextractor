@@ -20,7 +20,7 @@ Supports CSV and YAML output, preserves linebreaks by default. I made this prima
 ### Windows (Tested)
 2.  Unblock the file in Powershell (```Unblock-File <file>```)
 3.  Install poppler-utils:
-	- Download + extract the latest package from [here](http://blog.alivate.com.au/poppler-windows/)
+	- Download + extract the latest package from [here]([http://blog.alivate.com.au/poppler-windows/](https://github.com/oschwartz10612/poppler-windows/releases))
 	- Add the *bin/* directory to your $PATH
 4.  Run the tool in your favourite console
     -  If you have any anti virus software, it might take some time for it to run (whitelist it / confirm the notification)
