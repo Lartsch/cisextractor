@@ -1,3 +1,5 @@
+> :warning: **DEPRECATED:** Please be aware that as of now, this tool is MOST likely deprecated. There are alternatives more up-to-date.
+
 # cisextractor
 Tool to extract rules from any CIS benchmark PDF, written in Go.  
 
