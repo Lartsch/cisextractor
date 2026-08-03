@@ -19,7 +19,7 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-//  describes location of a rule in a CIS benchmark
+// describes location of a rule in a CIS benchmark
 type Location struct {
 	ID   string `yaml:"id"`
 	Name string `yaml:"name"`
@@ -33,11 +33,12 @@ type namedValue struct {
 
 // Rule describes a CIS benchmark rule
 type Rule struct {
-	ID        string            `yaml:"id"`
-	Name      string            `yaml:"name"`
-	Automated bool              `yaml:"automated"`
-	Location  []Location        `yaml:"location,omitempty"`
-	Sections  map[string]string `yaml:"-,inline"`
+	ID              string            `yaml:"id"`
+	Name            string            `yaml:"name"`
+	Automated       bool              `yaml:"automated"`
+	SuffixTableType string            `yaml:"suffixTableType"`
+	Location        []Location        `yaml:"location,omitempty"`
+	Sections        map[string]string `yaml:"-,inline"`
 }
 
 // start arguments
@@ -173,10 +174,11 @@ func removeSuffixAny(s string, suffix []string) string {
 }
 
 // split a title to id, name and determine if it is an actual rule and automated or not
-func splitTitle(title string) (id, name string, isActualRule bool, automated bool, err error) {
+func splitTitle(title string) (id, name string, isActualRule bool, automated bool, suffixTableType string, err error) {
 	// initial values
 	isActualRule = false
 	automated = false
+	suffixTableType = "Automated"
 	// rule types
 	rStr := []string{"(Automated)", "(Scored)", "(Manual)", "(Not Scored)"}
 	// if it has any of the above strings as suffix, it is a rule
@@ -186,6 +188,10 @@ func splitTitle(title string) (id, name string, isActualRule bool, automated boo
 		if hasSuffixAny(title, rStr[0:2]) {
 			automated = true
 		}
+		if hasSuffixAny(title, rStr[1:3]) {
+			suffixTableType = "Scored"
+		}
+
 		// now remove the suffix for cleanup
 		title = removeSuffixAny(title, rStr)
 	}
@@ -282,7 +288,7 @@ func prepareRules(titles []string) (noRuleCount int, ruleIDToName map[string]str
 	ruleIDToName = map[string]string{}
 	for _, title := range titles {
 		// for each title from the ToC, get the ID, if it is an rule and if it is automated
-		id, name, isActualRule, automated, err := splitTitle(title)
+		id, name, isActualRule, automated, suffixtabletype, err := splitTitle(title)
 		if err != nil {
 			fmt.Println(err)
 			continue
@@ -292,10 +298,11 @@ func prepareRules(titles []string) (noRuleCount int, ruleIDToName map[string]str
 		// if it is a rule, build the Rule object
 		if isActualRule {
 			rule := Rule{
-				ID:        id,
-				Automated: automated,
-				Name:      name,
-				Sections:  map[string]string{},
+				ID:              id,
+				Automated:       automated,
+				SuffixTableType: suffixtabletype,
+				Name:            name,
+				Sections:        map[string]string{},
 			}
 			// append it to our Rule array
 			rules = append(rules, rule)
@@ -385,9 +392,12 @@ func writeResultFile(populatedRules []Rule, outFileW string) {
 		sectionNames := []string{"Profile Applicability", "Description", "Rationale", "Audit", "Remediation", "Impact", "Default Value", "References", "CIS Controls"}
 		// holder
 		sectionKeyNames := []string{}
+		//code for determining if automated or scored is used in this document
+		suffixTableType := populatedRules[0].SuffixTableType
+
 		// first columns of the CSV
 		csvrecords := [][]string{
-			{"ID", "Name", "Location", "Automated"},
+			{"ID", "Name", "Location", suffixTableType},
 		}
 		// append the rule sections to our first CSV line (headers)
 		for _, section := range sectionNames {
